@@ -13,8 +13,9 @@ def main():
     for line in f:
         if ":" in line:
             new_data = line.split(":")
-            # if scores are not integers, would have to strip out newline.
-            rest_dict[new_data[0]] = int(new_data[1])
+            rest_dict[new_data[0]] = new_data[1].strip("\n")
+
+    f.close()
 
     sorted_names = rest_dict.keys()
 

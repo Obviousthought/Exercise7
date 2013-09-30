@@ -7,20 +7,14 @@ script, filename = argv
 
 rest_dict = {}
 
-def normalize( filetext ):
-    #make a dictionary!!
-    filelist = filetext.split("\n")
-
-    for pairs in filelist:
-        if ":" in pairs:
-            new_data = pairs.split(":")
-            rest_dict[new_data[0]] = new_data[1]
-
 def main():
-    open_file = open(filename)
-    filetext = open_file.read()
+    f = open(filename)
 
-    normalize( filetext )
+    for line in f:
+        if ":" in line:
+            new_data = line.split(":")
+            # if scores are not integers, would have to strip out newline.
+            rest_dict[new_data[0]] = int(new_data[1])
 
     sorted_names = rest_dict.keys()
 

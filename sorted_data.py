@@ -11,8 +11,8 @@ def main():
     f = open(filename)
 
     for line in f:
-        if ":" in line:
-            new_data = line.split(":")
+        new_data = line.split(":")
+        if len(new_data) == 2:
             rest_dict[new_data[0]] = new_data[1].strip("\n")
 
     f.close()
